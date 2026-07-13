@@ -3,12 +3,12 @@
 // =========================================================================
 const CONFIG = {
     // 1. Replace the text inside the quotes below with your actual Base ID:
-    BASE_ID: 'app2dNCzkf61VdNKa', 
+    BASE_ID: 'YOUR_ACTUAL_BASE_ID_HERE', 
     
     TABLE_NAME: 'Resources',
     
     // 2. Replace the text inside the quotes below with your secret token (pat...):
-    TOKEN: 'patCBtMvQdG5QtQ9r.87ec8e72b468272a8ee177510f0aab7ce1d5a8d311813d922236a5559eed9bb5' 
+    TOKEN: 'PASTE_YOUR_SECRET_TOKEN_HERE' 
 };
 
 // Construct the secure, filtered REST API gateway endpoint
