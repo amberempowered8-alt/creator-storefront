@@ -54,22 +54,22 @@ async function fetchResources() {
         data.records.forEach(record => {
             const fields = record.fields;
             
-            // Safe extraction fallbacks to maintain visual structural integrity if data fields are left blank
+            // Safe extraction fallbacks
             const name = fields['Resource Name'] || 'Untitled Resource Asset';
             const category = fields['Category'] || 'Resource';
             const description = fields['Description'] || 'No description provided for this dynamic resource item.';
             const link = fields['Access Link'] || '#';
             
-            // Extract the attachment object securely
+            // Extract attachment object securely
             let imageUrl = '';
             if (fields['Cover Image'] && fields['Cover Image'].length > 0) {
                 imageUrl = fields['Cover Image'][0].url;
             }
 
-            // Generate clean, system-standard class strings for dynamic badge colors
+            // Generate category badge classes dynamically
             const badgeClass = `badge-${category.toLowerCase().replace(/\s+/g, '-')}`;
 
-            // Build out the clean responsive layout template skeleton
+            // Build card template skeleton
             const cardHTML = `
                 <div class="card card-anim">
                     ${imageUrl 
@@ -85,7 +85,7 @@ async function fetchResources() {
                 </div>
             `;
             
-            // Inject the completed asset cleanly right into the grid framework
+            // Inject asset cleanly into grid framework
             container.innerHTML += cardHTML;
         });
 
@@ -99,5 +99,5 @@ async function fetchResources() {
     }
 }
 
-// Instantiate the application process instantly upon script initialization
+// Instantiate application process
 fetchResources();
