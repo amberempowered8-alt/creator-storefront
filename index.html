@@ -5,36 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Ultimate Creator Storefront Tour</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     
     <style>
-        /* 🎨 MASTER CONFIGURATION MATRIX: YOUR BUYER CHANGES THESE 5 LINES */
+        /* Custom Interactive Dashboard Brand Overlays */
         :root {
-            --primary: #FF007A;          /* Main interactive action & brand accents */
-            --primary-hover: #D00063;    /* Hover action color match */
-            --bg: #FAFAFA;               /* Global document canvas backdrop */
-            --card-bg: #FFFFFF;          /* Inventory asset card backdrop */
-            --text: #2D2D2D;             /* Clear body copy typography focus */
-            --muted: #666666;            /* Secondary subtitles and meta tags */
-            
-            /* VSL Interactive Dashboard Brand Overlays */
             --vsl-gradient: linear-gradient(135deg, #743ad5 0%, #d53a9d 100%);
             --vsl-accent: #743ad5;
             --vsl-dark-bg: #1e1b4b;
         }
 
-        /* Core Canvas Reset Overlays */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-        }
-
         .gradient-bg { background: var(--vsl-gradient); }
         
-        .card-anim { transition: all 0.3s cubic-bezier(.25,.8,.25,1); }
-        .card-anim:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(116, 58, 213, 0.15); }
-        
-        /* Custom Confetti Background Particle Matrix */
         .confetti-bg {
             background-color: var(--vsl-dark-bg);
             background-image: 
@@ -46,88 +28,6 @@
                 radial-gradient(circle at 60% 70%, #d53a9d 1px, transparent 1px);
             background-size: 200px 200px;
         }
-
-        /* --- Dynamic CMS Product Display Grid UI (From style.css) --- */
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .loading {
-            grid-column: 1 / -1;
-            text-align: center;
-            color: var(--muted);
-            font-size: 1.2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .badge {
-            align-self: flex-start;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        /* Dynamic Category Badge Accent Matrices */
-        .badge-freebie { background: #E3FCEF; color: #006644; }
-        .badge-notion-template { background: #DEEBFF; color: #0052CC; }
-        .badge-premium-guide { background: #EAE6FF; color: #403294; }
-        .badge-resource-list { background: #E2F0D9; color: #385723; }
-
-        .card-title {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .card-description {
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .card-btn {
-            display: block;
-            text-align: center;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        .card-btn:hover {
-            background: var(--primary-hover);
-        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col font-sans">
@@ -136,7 +36,7 @@
         <div class="w-28 h-28 mb-4 overflow-hidden rounded-full border-4 border-purple-200/30 bg-purple-900/40 flex items-center justify-center shadow-lg text-5xl">
             ✨
         </div>
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-3">The Creator Storefront Tour</h1>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-3 text-white">The Creator Storefront Tour</h1>
         <p class="text-lg md:text-xl text-purple-100 max-w-3xl mx-auto font-medium">
             Stop losing leads to cluttered links. Take a virtual walk through the automation backend built to scale your digital empire.
         </p>
@@ -144,6 +44,7 @@
 
     <main class="flex-grow container mx-auto px-4 py-10 max-w-5xl">
         
+        <!-- Interactive 3-Room Tour Navigation -->
         <div class="bg-white rounded-3xl p-6 shadow-xl border border-gray-100 text-center mb-12">
             <h2 class="text-xl font-bold mb-4 text-purple-700">Step Inside the Tour Rooms:</h2>
             
@@ -161,8 +62,9 @@
         </div>
 
         <div id="tour-content" class="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl min-h-[300px] flex flex-col justify-between mb-16">
-            </div>
+        </div>
 
+        <!-- Dynamic CMS Inventory Grid Target -->
         <section class="my-12">
             <h2 class="text-3xl font-black text-center mb-8 tracking-tight">Our Live Dynamic Catalog</h2>
             <div id="resource-container" class="resource-grid">
@@ -170,6 +72,7 @@
             </div>
         </section>
 
+        <!-- CTA Callout Block -->
         <section class="mt-16 text-center max-w-2xl mx-auto confetti-bg rounded-3xl p-10 border border-purple-500/40 shadow-2xl flex flex-col items-center">
             <div class="text-4xl mb-2">🎉</div>
             <h2 class="text-3xl font-extrabold text-white mb-2">Ready to own your system?</h2>
@@ -184,7 +87,7 @@
     </main>
 
     <footer class="bg-gray-900 text-gray-400 py-6 text-center text-xs border-t border-gray-800 mt-20">
-        <p>&copy; 2026 Creator Optimization Systems. All Rights Reserved.</p>
+        <p>&copy; 2026 Sovereign Operations. Built with $0 Overhead Architecture.</p>
     </footer>
 
     <script>
