@@ -35,6 +35,32 @@ Welcome to your new Automated Headless Storefront! This system gives you 100% da
 ### Step 3: Deploy to the Web (100% Free)
 * **GitHub Pages (Recommended):** Click **Settings > Pages**, set the Branch to **`main`**, and click **Save**. Your site will be live globally in 60 seconds!
 * **Drag & Drop:** Alternatively, deploy your repo to a free account on [Vercel](https://vercel.com) or [Netlify](https://netlify.com).
+* ---
+
+## 🌐 Connecting a Custom Domain (e.g., www.yourbrand.com)
+
+If you registered a domain on Squarespace Domains, Namecheap, or GoDaddy, you can point it to your free GitHub Pages site in under 3 minutes:
+
+### 1️⃣ Add Domain to GitHub
+1. In your cloned GitHub repository, go to **Settings > Pages**.
+2. Scroll down to the **Custom domain** section.
+3. Type your custom domain name (e.g., `www.yourbrand.com`) and click **Save**.
+4. Check the box for **Enforce HTTPS** (this gives your site the secure lock icon 🔒 for free).
+
+### 2️⃣ Update Your Domain DNS Settings
+Log into your domain provider (e.g., Squarespace Domains) and navigate to your **DNS Management** dashboard. Add these 2 records:
+
+* **CNAME Record:**
+  * **Host / Name:** `www`
+  * **Value / Target:** `YOUR_GITHUB_USERNAME.github.io`
+* **A Records (Apex Domain Routing):**
+  * Point your root `@` domain to these 4 official GitHub IP addresses:
+    * `185.199.108.153`
+    * `185.199.109.153`
+    * `185.199.110.153`
+    * `185.199.111.153`
+
+*Give your domain provider 15–30 minutes to propagate, and your storefront will be live at your custom branded domain!*
 
 ---
 
