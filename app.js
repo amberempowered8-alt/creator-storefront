@@ -1,18 +1,34 @@
 // =========================================================================
-// 🚀 DYNAMIC CMS MASTER CONFIGURATION MODULE
+// 🚀 DYNAMIC CMS MASTER CONFIGURATION MODULE (app.js)
+// Clean, secure, optimized fetch framework for headless Airtable integrations.
 // =========================================================================
+
 const CONFIG = {
-    // 1. Replace the text inside the quotes below with your actual Base ID:
+    // 1. Replace with your actual Airtable Base ID (starts with "app"):
     BASE_ID: 'YOUR_ACTUAL_BASE_ID_HERE', 
     
+    // 2. Airtable table name housing your published catalog items:
     TABLE_NAME: 'Resources',
     
-    // 2. Replace the text inside the quotes below with your secret token (pat...):
+    // 3. Replace with your Read-Only Personal Access Token (starts with "pat"):
+    // IMPORTANT SECURITY NOTE: Ensure your token scope is strictly set to data.records:read
     TOKEN: 'PASTE_YOUR_SECRET_TOKEN_HERE' 
 };
 
-// Construct the secure, filtered REST API gateway endpoint
-const URL_ENDPOINT = `https://api.airtable.com/v0/${CONFIG.BASE_ID}/${encodeURIComponent(CONFIG.TABLE_NAME)}?filterByFormula=Status%3D%27Published%27`;
+/**
+ * Utility: Sanitizes raw text inputs to prevent Cross-Site Scripting (XSS)
+ * @param {string} str 
+ * @returns {string} Sanitized string
+ */
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
 
 /**
  * Executes a real-time data fetch from the configured Airtable database architecture,
@@ -21,14 +37,19 @@ const URL_ENDPOINT = `https://api.airtable.com/v0/${CONFIG.BASE_ID}/${encodeURIC
 async function fetchResources() {
     const container = document.getElementById('resource-container');
     
-    // Safety check: Exit gracefully if the mounting point does not exist in the HTML DOM
+    // Safety check: Exit gracefully if the mounting point does not exist in the DOM
     if (!container) {
         console.warn("Application Initialization Warning: Mount target element '#resource-container' was not found in the DOM.");
         return;
     }
-    
+
+    // Build REST API gateway endpoint dynamically at invocation time
+    const encodedTable = encodeURIComponent(CONFIG.TABLE_NAME);
+    const filterFormula = encodeURIComponent("Status='Published'");
+    const urlEndpoint = `https://api.airtable.com/v0/${CONFIG.BASE_ID}/${encodedTable}?filterByFormula=${filterFormula}`;
+
     try {
-        const response = await fetch(URL_ENDPOINT, {
+        const response = await fetch(urlEndpoint, {
             headers: {
                 'Authorization': `Bearer ${CONFIG.TOKEN}`,
                 'Content-Type': 'application/json'
@@ -41,63 +62,84 @@ async function fetchResources() {
 
         const data = await response.json();
         
-        // Purge the initial fallback loading state
-        container.innerHTML = '';
-
         // Handle empty database returns cleanly
         if (!data.records || data.records.length === 0) {
-            container.innerHTML = `<p class="loading">No live assets found. Set item status to 'Published' inside Airtable to display.</p>`;
+            container.innerHTML = `
+                <p class="loading">
+                    No live assets found. Set item status to 'Published' inside your Airtable database to display products.
+                </p>`;
             return;
         }
 
-        // Loop over the published data records and systematically render the layout card UI
+        // Accumulator variable to avoid multiple DOM reflows
+        let gridHTML = '';
+
+        // Loop over published records and build structural cards
         data.records.forEach(record => {
-            const fields = record.fields;
+            const fields = record.fields || {};
             
-            // Safe extraction fallbacks
-            const name = fields['Resource Name'] || 'Untitled Resource Asset';
-            const category = fields['Category'] || 'Resource';
-            const description = fields['Description'] || 'No description provided for this dynamic resource item.';
-            const link = fields['Access Link'] || '#';
+            // Safe extraction & HTML sanitization
+            const name = escapeHTML(fields['Resource Name'] || 'Untitled Resource Asset');
+            const category = escapeHTML(fields['Category'] || 'Resource');
+            const description = escapeHTML(fields['Description'] || 'No description provided for this dynamic resource item.');
             
-            // Extract attachment object securely
+            // Validate link URL structure
+            let link = fields['Access Link'] || '#';
+            if (link !== '#' && !/^https?:\/\//i.test(link)) {
+                link = `https://${link}`;
+            }
+
+            // Extract attachment object securely (favoring optimized 'large' thumbnail)
             let imageUrl = '';
-            if (fields['Cover Image'] && fields['Cover Image'].length > 0) {
-                imageUrl = fields['Cover Image'][0].url;
+            if (fields['Cover Image'] && Array.isArray(fields['Cover Image']) && fields['Cover Image'].length > 0) {
+                const imgObj = fields['Cover Image'][0];
+                imageUrl = (imgObj.thumbnails && imgObj.thumbnails.large) 
+                    ? imgObj.thumbnails.large.url 
+                    : imgObj.url;
             }
 
             // Generate category badge classes dynamically
-            const badgeClass = `badge-${category.toLowerCase().replace(/\s+/g, '-')}`;
+            const categorySlug = category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            const badgeClass = `badge-${categorySlug}`;
 
-            // Build card template skeleton
-            const cardHTML = `
-                <div class="card card-anim">
+            // Accumulate Card Template HTML
+            gridHTML += `
+                <article class="card card-anim">
                     ${imageUrl 
-                        ? `<img src="${imageUrl}" alt="${name}" class="card-image" loading="lazy">` 
-                        : '<div class="card-image" style="background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%); flex-shrink: 0;"></div>'
+                        ? `<img src="${imageUrl}" alt="${name}" class="card-image" loading="lazy" decoding="async">` 
+                        : '<div class="card-image" aria-hidden="true"></div>'
                     }
                     <div class="card-content">
                         <span class="badge ${badgeClass}">${category}</span>
                         <h3 class="card-title">${name}</h3>
                         <p class="card-description">${description}</p>
-                        <a href="${link}" target="_blank" class="card-btn">Access Resource</a>
+                        <a href="${escapeHTML(link)}" target="_blank" rel="noopener noreferrer" class="card-btn">
+                            Access Resource
+                        </a>
                     </div>
-                </div>
+                </article>
             `;
-            
-            // Inject asset cleanly into grid framework
-            container.innerHTML += cardHTML;
         });
+
+        // Single DOM Write Operation (High Performance)
+        container.innerHTML = gridHTML;
 
     } catch (error) {
         console.error('Data Transmission Error:', error);
         container.innerHTML = `
-            <p class="loading" style="color: #ef4444; font-weight: 600;">
-                🔒 Secure Database Gateway Connection Failure. Check credentials inside app.js configuration panel.
-            </p>
+            <div class="loading text-red-500 font-semibold" style="color: #ef4444; text-align: center; width: 100%;">
+                <p>🔒 Secure Database Gateway Connection Failure.</p>
+                <p class="text-xs text-gray-500 mt-2 font-normal" style="font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem;">
+                    Please verify your <code>BASE_ID</code> and <code>TOKEN</code> credentials inside <code>app.js</code>.
+                </p>
+            </div>
         `;
     }
 }
 
-// Instantiate application process
-fetchResources();
+// Instantiate application process when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fetchResources);
+} else {
+    fetchResources();
+}
