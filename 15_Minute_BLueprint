@@ -1,0 +1,67 @@
+# ⚡ THE 15-MINUTE STOREFRONT DEPLOYMENT BLUEPRINT
+
+Thank you for claiming your **Automated Headless Storefront** template! You have just taken a massive step toward absolute digital ownership. By bypassing clunky web builders and monthly recurring fees, you are launching a lightweight storefront that runs at lightning speed with **$0/month in software overhead**.
+
+Follow these **3 simple phases** to bring your new storefront to life.
+
+---
+
+## 🛠️ PHASE 1: COPYING YOUR DATABASE SPREADSHEET
+
+We use **Airtable** as your content management system. It acts as the live "brain" of your website, allowing you to update inventory from your desktop or phone in real-time.
+
+1. **Create Account:** Log into or create a free account at [Airtable.com](https://airtable.com).
+2. **Open Master Link:** Click your shareable blueprint link:  
+   👉 `[PASTE YOUR SHAREABLE AIRTABLE BASE BLUEPRINT URL HERE]`
+3. **Duplicate Base:** Click the **"Duplicate Base"** button in the top-right corner of your screen and select your workspace as the destination. You now own the database!
+4. **Add a Test Item:** Inside your new `Resources` table, create a test row with the following values:
+   * **Resource Name:** `My First Digital Product`
+   * **Category:** `Freebie` *(or `Notion Template`, `Premium Guide`, `Resource List`)*
+   * **Description:** `This is a quick test guide to verify my live storefront.`
+   * **Access Link:** `https://your-payment-or-checkout-link.com`
+   * **Status:** `Published`
+
+---
+
+## 🔑 PHASE 2: CONFLICT-FREE TECH PAIRING
+
+Now, we tell your website code where to look for your spreadsheet data.
+
+1. **Copy Your Base ID:**
+   * Open your duplicated Airtable base in your browser.
+   * Look at the address bar URL. Copy the string of characters right after `airtable.com/` that starts with `app` (e.g., `app2dNCzkf61VdNKa`). This is your **Base ID**.
+2. **Update `app.js` Base ID:**
+   * Open `app.js` in a text editor (VS Code, Notepad, or TextEdit).
+   * Replace `'YOUR_ACTUAL_BASE_ID_HERE'` with your copied Base ID *(keep the single quotes around it!)*.
+3. **Generate Your Personal Access Token (PAT):**
+   * Go directly to [airtable.com/create/tokens](https://airtable.com/create/tokens).
+   * Click **"Create Token"** and name it `Storefront Read Key`.
+   * Under **Scopes**, click *Add a scope* and select strictly **`data.records:read`** *(Read-Only permissions keep your site 100% secure!)*.
+   * Under **Access**, select your duplicated storefront base.
+4. **Update `app.js` Token:**
+   * Click **Create token**, copy the generated key string starting with `pat...`.
+   * Paste it inside `app.js` replacing `'PASTE_YOUR_SECRET_TOKEN_HERE'`.
+   * Save and close `app.js`.
+
+---
+
+## 🚀 PHASE 3: THE 100% FREE GITHUB PAGES LAUNCH
+
+Host your storefront live on the web 24/7 with zero monthly hosting costs.
+
+1. **Create Repository:** Log into [GitHub.com](https://github.com) and click **New Repository**.
+   * Name your repository after your brand or store (e.g., `my-digital-shop`).
+   * Set visibility to **Public**.
+2. **Upload Files:** Drag and drop `index.html`, `style.css`, and your newly saved `app.js` into your repository upload screen and click **Commit changes**.
+3. **Turn On Live Pages:**
+   * Go to **Settings > Pages** inside your repository navbar.
+   * Under **Build and deployment**, change the Branch dropdown from `None` to **`main`**.
+   * Click **Save**.
+
+🎉 **Congratulations!** Your live storefront URL will be generated in under 60 seconds at:  
+`https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/`
+
+---
+
+### 💼 Want This Fully Custom-Integrated & Managed?
+If you prefer to skip the manual setup and have your storefront directly wired into a custom automated lead system with dedicated webhooks and custom domain routing, upgrade to our **VIP Business-in-a-Box Package**. We handle end-to-end setup, design styling, and full QA testing.
