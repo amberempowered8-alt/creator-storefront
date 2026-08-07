@@ -53,7 +53,7 @@ Welcome to your new **Automated Headless Storefront**! This system gives you 100
 
 ### Step 4: Connect Your Own Checkout Link
 
-Open `index.html` and find the button near the bottom of the page. Replace `https://your-payment-link.com` with the link where people can actually pay you — your Payhip page, Stripe checkout, or PayPal link.
+Open `index.html` and find line 114 and replace `https://your-payment-link.com` with the link where people can actually pay you — your Payhip page, Stripe checkout, or PayPal link.
 
 This is what makes your "Buy Now" button work. Without this step, visitors won't be able to purchase from your storefront.
 
