@@ -51,6 +51,12 @@ Welcome to your new **Automated Headless Storefront**! This system gives you 100
 5. Under **Build and deployment**, set the Branch dropdown to `main` and folder to `/ (root)`, then click **Save**.
 6. Your storefront will be live globally at `https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/` in 60 seconds!
 
+### Step 4: Connect Your Own Checkout Link
+
+Open `index.html` and find the button near the bottom of the page. Replace `https://your-payment-link.com` with the link where people can actually pay you — your Payhip page, Stripe checkout, or PayPal link.
+
+This is what makes your "Buy Now" button work. Without this step, visitors won't be able to purchase from your storefront.
+
 ---
 
 ## 🌐 Connecting a Custom Domain (e.g., www.yourbrand.com)
