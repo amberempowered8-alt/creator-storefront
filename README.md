@@ -30,7 +30,7 @@ Welcome to your new **Automated Headless Storefront**! This system gives you 100
 ---
 
 ### Step 2: Configure Your Secure Database Keys
-1. Open `app.js` in your code/text editor.
+1. Open `app.js` in your code/text editor, or directly on GitHub by clicking the file, then the **pencil icon** (top right) to open the editor.
 2. Locate the `CONFIG` object at the top of the file:
    * Replace `'YOUR_ACTUAL_BASE_ID_HERE'` with your **Airtable Base ID** (found in your browser address bar when viewing your base, starting with `app...`).
 3. Go to the [Airtable Token Developer Hub](https://airtable.com/create/tokens) and click **"Create New Token"**.
@@ -38,6 +38,7 @@ Welcome to your new **Automated Headless Storefront**! This system gives you 100
    * **Scopes:** Click *Add a scope* and select strictly **`data.records:read`**.
    * **Access:** Add your duplicated base under workspace access.
 4. Click **Create Token**, copy the token string starting with `pat...`, and paste it into `app.js` replacing `'PASTE_YOUR_SECRET_TOKEN_HERE'`.
+5. If editing directly on GitHub, scroll down and click **"Commit changes"** — this is what actually saves your edits. If you don't commit, your changes won't be saved.
 
 > 🔒 **Security Best Practice:** Always restrict your token to `data.records:read` (Read-Only permissions). This ensures visitors cannot modify or erase records inside your database.
 
@@ -49,11 +50,15 @@ Welcome to your new **Automated Headless Storefront**! This system gives you 100
 3. Upload `index.html`, `style.css`, and `app.js` into the root directory.
 4. Click **Settings > Pages** on your repository navbar.
 5. Under **Build and deployment**, set the Branch dropdown to `main` and folder to `/ (root)`, then click **Save**.
-6. Your storefront will be live globally at `https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/` in 60 seconds!
+6. Your storefront will be live globally at `https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/` shortly after.
+
+**Give it a minute.** After you commit changes or turn on Pages for the first time, GitHub needs a minute or two to rebuild your site. If your link doesn't show your changes (or shows an error) right away, wait a minute and refresh before assuming something's wrong.
 
 ### Step 4: Connect Your Own Checkout Link
 
-Open `index.html` and find line 114 and replace `https://your-payment-link.com` with the link where people can actually pay you — your Payhip page, Stripe checkout, or PayPal link.
+Open `index.html` (click the file, then the pencil icon to edit) and find line 114. Replace `https://your-payment-link.com` with the link where people can actually pay you — your Payhip page, Stripe checkout, or PayPal link. Then scroll down and click **"Commit changes"** to save.
+
+**Do not click the placeholder link as-is** — it's not a real working page, just text meant to be replaced.
 
 This is what makes your "Buy Now" button work. Without this step, visitors won't be able to purchase from your storefront.
 
@@ -97,3 +102,14 @@ To change your storefront colors globally, open `style.css` (and the `<style>` b
     --card-bg: #FFFFFF;          /* Inventory asset card background */
     --text: #2D2D2D;              /* Body typography text color */
 }
+```
+
+---
+
+## 💬 Need Help?
+
+This is a self-guided template.
+
+👉 **Join the AE9 Labs Discord:** https://discord.gg/b45jmgHK3
+
+👉 **Support & Feedback form:** https://airtable.com/app2dNCzkf61VdNKa/pagH5JffQIe7npirH/form
