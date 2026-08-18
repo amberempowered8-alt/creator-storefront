@@ -54,6 +54,26 @@ Welcome to your new **Automated Headless Storefront**! This system gives you 100
 
 **Give it a minute.** After you commit changes or turn on Pages for the first time, GitHub needs a minute or two to rebuild your site. If your link doesn't show your changes (or shows an error) right away, wait a minute and refresh before assuming something's wrong.
 
+## Connecting a Custom Domain (e.g., www.yourdomain.com)
+
+Already have your own domain from Squarespace Domains, Namecheap, GoDaddy, or Cloudflare? Here's how to point it at your free GitHub Pages site instead of using the default `github.io` link.
+
+**1. Set it in GitHub:**
+1. In your repository, go to **Settings → Pages**.
+2. Scroll to **Custom domain**, enter your domain (e.g., `www.yourdomain.com`), and click **Save**.
+3. Check the box for **Enforce HTTPS** — this turns on your free SSL security certificate.
+
+**2. Update your domain's DNS settings:**
+Log into your domain provider's DNS management panel and add:
+- **CNAME Record:** Host/Name: `www` → Value/Target: `YOUR_GITHUB_USERNAME.github.io`
+- **A Records** (for the root domain `@`), pointing to GitHub's IP addresses:
+  - `185.199.108.153`
+  - `185.199.109.153`
+  - `185.199.110.153`
+  - `185.199.111.153`
+
+DNS changes typically take 5–30 minutes to go live, sometimes longer.
+
 ### Step 4: Connect Your Own Checkout Link
 
 Open `index.html` (click the file, then the pencil icon to edit) and find line 114. Replace `https://your-payment-link.com` with the link where people can actually pay you — your Payhip page, Stripe checkout, or PayPal link. Then scroll down and click **"Commit changes"** to save.
