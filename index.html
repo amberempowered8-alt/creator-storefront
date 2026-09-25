@@ -1,239 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary SEO & Social Graph -->
-    <title>The Ultimate Creator Storefront Tour</title>
-    <meta name="description" content="Stop losing leads to cluttered links. Take a virtual walk through the high-conversion automation backend built to scale your digital empire.">
-    <meta property="og:title" content="The Ultimate Creator Storefront Tour">
-    <meta property="og:description" content="Automated, zero-overhead digital storefront architecture for founders and creators.">
-    <meta property="og:type" content="website">
-
-    <!-- Tailwind CSS v3 Play CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    
-    <style>
-        /* Custom Interactive Dashboard Brand Overlays */
-        :root {
-            --vsl-gradient: linear-gradient(135deg, #743ad5 0%, #d53a9d 100%);
-            --vsl-accent: #743ad5;
-            --vsl-dark-bg: #1e1b4b;
-        }
-
-        .gradient-bg { background: var(--vsl-gradient); }
-        
-        .confetti-bg {
-            background-color: var(--vsl-dark-bg);
-            background-image: 
-                radial-gradient(circle at 20% 30%, #ff007f 1px, transparent 1px),
-                radial-gradient(circle at 75% 40%, #00f0ff 2px, transparent 2px),
-                radial-gradient(circle at 40% 80%, #ffee00 1.5px, transparent 1.5px),
-                radial-gradient(circle at 90% 15%, #00ff66 1px, transparent 1px),
-                radial-gradient(circle at 10% 85%, var(--vsl-accent) 2.5px, transparent 2.5px),
-                radial-gradient(circle at 60% 70%, #d53a9d 1px, transparent 1px);
-            background-size: 200px 200px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalog</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-gray-50 text-gray-900 antialiased">
+<body>
 
-    <!-- Header Banner -->
-    <header class="gradient-bg text-white py-12 px-4 shadow-xl text-center relative overflow-hidden flex flex-col items-center">
-        <div class="w-28 h-28 mb-4 overflow-hidden rounded-full border-4 border-purple-200/30 bg-purple-900/40 flex items-center justify-center shadow-lg text-5xl select-none" aria-hidden="true">
-            ✨
-        </div>
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-3 text-white">The Creator Storefront Tour</h1>
-        <p class="text-lg md:text-xl text-purple-100 max-w-3xl mx-auto font-medium leading-relaxed">
-            Stop losing leads to cluttered links. Take a virtual walk through the automation backend built to scale your digital empire.
-        </p>
-    </header>
+<header class="site-header">
+  <div class="wrap header-row">
+    <span class="brand" id="brand-name">Your Business Name</span>
+    <a href="#catalog" class="btn btn-primary btn-small">View Catalog</a>
+  </div>
+</header>
 
-    <!-- Main Content Hub -->
-    <main class="flex-grow container mx-auto px-4 py-10 max-w-5xl">
-        
-        <!-- Interactive 3-Room Tour Navigation -->
-        <section class="bg-white rounded-3xl p-6 shadow-xl border border-gray-100 text-center mb-12">
-            <h2 class="text-xl font-bold mb-4 text-purple-700">Step Inside the Tour Rooms:</h2>
-            
-            <div class="flex flex-wrap justify-center gap-4" role="tablist" aria-label="Storefront Architecture Tour">
-                <button 
-                    onclick="switchRoom('room1')" 
-                    id="btn-room1" 
-                    role="tab"
-                    aria-selected="true"
-                    aria-controls="tour-content"
-                    class="room-btn px-6 py-3 rounded-xl font-bold text-sm bg-purple-600 text-white shadow-lg transition duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
-                    🚪 Room 1: The Link-In-Bio Graveyard
-                </button>
-                <button 
-                    onclick="switchRoom('room2')" 
-                    id="btn-room2" 
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="tour-content"
-                    class="room-btn px-6 py-3 rounded-xl font-bold text-sm bg-gray-100 text-gray-600 hover:bg-gray-200 transition duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
-                    🚪 Room 2: The Ghost Town Backend
-                </button>
-                <button 
-                    onclick="switchRoom('room3')" 
-                    id="btn-room3" 
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="tour-content"
-                    class="room-btn px-6 py-3 rounded-xl font-bold text-sm bg-gray-100 text-gray-600 hover:bg-gray-200 transition duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
-                    🚪 Room 3: The Platform Rental Trap
-                </button>
-            </div>
-        </section>
+<main>
 
-        <!-- Dynamic Tour Display Container -->
-        <div id="tour-content" role="tabpanel" class="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl min-h-[300px] flex flex-col justify-between mb-16 transition-all duration-300">
-            <!-- Populated via switchRoom JavaScript -->
-        </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Always Up To Date</p>
+        <h1>Everything I sell, in one place.</h1>
+        <p class="hero-sub" id="hero-subtext">Browse what's available right now — updated automatically, no broken links, no cluttered link-in-bio page.</p>
+        <a href="#catalog" class="btn btn-primary">Browse the Catalog</a>
+      </div>
+    </div>
+  </section>
 
-        <!-- Dynamic CMS Inventory Grid Target -->
-        <section class="my-12">
-            <h2 class="text-3xl font-black text-center mb-8 tracking-tight text-gray-900">Our Live Dynamic Catalog</h2>
-            <div id="resource-container" class="resource-grid">
-                <p class="loading text-center text-gray-500 font-medium py-8">Syncing secure gateway channel to database items...</p>
-            </div>
-        </section>
+  <!-- TRUST STRIP -->
+  <section class="trust-strip">
+    <div class="wrap trust-row" id="trust-row">
+      <!-- populated by app.js from CONFIG.credentials -->
+    </div>
+  </section>
 
-        <!-- Conversion CTA Callout Block -->
-        <section class="mt-16 text-center max-w-2xl mx-auto confetti-bg rounded-3xl p-10 border border-purple-500/40 shadow-2xl flex flex-col items-center">
-            <div class="text-4xl mb-2 select-none" aria-hidden="true">🎉</div>
-            <h2 class="text-3xl font-extrabold text-white mb-2">Ready to own your system?</h2>
-            <p class="text-purple-200 text-sm mb-6 max-w-lg leading-relaxed">
-                Get the exact headless website script layout, the plug-and-play Airtable architecture master template, and the step-by-step SOP to launch your own automated hub in 15 minutes.
-            </p>
-            
-            <!-- CLIENT ACTION REQUIRED: Replace link below with your checkout URL -->
-            <a href="https://your-payment-link.com" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="inline-block w-full sm:w-auto gradient-bg text-white font-black text-lg px-8 py-3.5 rounded-xl shadow-lg hover:opacity-95 transform active:scale-95 transition duration-150 tracking-wide">
-                🔥 GET THE TEMPLATE + SOP NOW ($97)
-            </a>
-        </section>
+  <!-- CATALOG (live, synced from Airtable) -->
+  <section id="catalog" class="catalog">
+    <div class="wrap">
+      <p class="eyebrow center">The Catalog</p>
+      <h2 class="center">What's Available Right Now</h2>
+      <div id="resource-container" class="resource-grid">
+        <p class="loading">Loading your catalog…</p>
+      </div>
+    </div>
+  </section>
 
-    </main>
+  <!-- CLOSING CTA -->
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <div class="cta-card">
+        <h2 id="closing-heading">Want to work together?</h2>
+        <p class="cta-note" id="closing-subtext">Reach out and let's talk about what you need.</p>
+        <!-- CLIENT ACTION REQUIRED: replace with your real contact/checkout link -->
+        <a href="#" id="closing-link" class="btn btn-primary btn-wide" target="_blank" rel="noopener noreferrer">Get In Touch</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Global Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-xs border-t border-gray-800 mt-20">
-        <p>&copy; 2026 Sovereign Operations. Built with $0 Overhead Architecture.</p>
-    </footer>
+</main>
 
-    <!-- Interactive Logic Script -->
-    <script>
-        const rooms = {
-            room1: {
-                title: "🪦 Room 1: The 'Link-In-Bio' Graveyard",
-                painPoint: "Are you still paying monthly fees for a boring wall of blocky buttons that dilutes your personal brand?",
-                visual: `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-6">
-                        <div class="bg-red-50 p-6 rounded-2xl border border-red-200 opacity-80">
-                            <p class="text-xs uppercase font-black text-red-600 mb-3 tracking-wider">The Standard Way ❌</p>
-                            <div class="space-y-2">
-                                <div class="w-full bg-red-100 text-red-700 py-3 text-center rounded-lg text-xs font-bold">Cluttered Button #1</div>
-                                <div class="w-full bg-red-100 text-red-700 py-3 text-center rounded-lg text-xs font-bold">Expired Freebie Link</div>
-                                <div class="w-full bg-red-100 text-red-700 py-3 text-center rounded-lg text-xs font-bold">Unbranded Profile</div>
-                            </div>
-                        </div>
-                        <div class="bg-purple-50 p-6 rounded-2xl border border-purple-200">
-                            <p class="text-xs uppercase font-black text-purple-600 mb-3 tracking-wider">Live Dynamic Hub Framework ✅</p>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="bg-white p-3 rounded-xl text-center text-xs font-bold shadow-sm border border-purple-100 text-purple-900">🎨 Templates</div>
-                                <div class="bg-white p-3 rounded-xl text-center text-xs font-bold shadow-sm border border-purple-100 text-purple-900">📚 Notion Guides</div>
-                                <div class="bg-white p-3 rounded-xl text-center text-xs font-bold shadow-sm border border-purple-100 text-purple-900">💡 Free Resources</div>
-                                <div class="bg-white p-3 rounded-xl text-center text-xs font-bold shadow-sm border border-purple-100 text-purple-900">🛠️ Mini-Courses</div>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                takeaway: "Your assets deserve a clean, searchable marketplace view that maintains audience focus instantly."
-            },
-            room2: {
-                title: "👻 Room 2: The Ghost Town Backend",
-                painPoint: "When a user requests your freebie, do you manually handle delivery or blindly cross your fingers hoping it didn't break?",
-                visual: `
-                    <div class="bg-gray-900 rounded-2xl p-6 text-center my-6 shadow-inner">
-                        <p class="text-xs text-purple-400 uppercase font-black tracking-widest mb-4">Your Automated Lead Data Engine</p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-mono text-white">
-                            <div class="bg-purple-900/60 p-3 rounded-xl border border-purple-500 w-full sm:w-auto">💻 Site Interface</div>
-                            <span class="text-purple-400 font-bold hidden sm:inline">➔</span>
-                            <span class="text-purple-400 font-bold sm:hidden">↓</span>
-                            <div class="bg-indigo-900/60 p-3 rounded-xl border border-indigo-500 w-full sm:w-auto">📬 Ingestion Gateway</div>
-                            <span class="text-purple-400 font-bold hidden sm:inline">➔</span>
-                            <span class="text-purple-400 font-bold sm:hidden">↓</span>
-                            <div class="bg-pink-900/60 p-3 rounded-xl border border-pink-500 w-full sm:w-auto">📊 Airtable Control Base</div>
-                        </div>
-                    </div>
-                `,
-                takeaway: "Capture leads securely in real-time, instantly sync records to spreadsheets, and fire off deliveries completely on autopilot while you sleep."
-            },
-            room3: {
-                title: "🫥 Room 3: The 'Platform Rental' Trap",
-                painPoint: "If your link provider raises prices or crashes during a viral launch, how much revenue falls through the cracks?",
-                visual: `
-                    <div class="p-6 rounded-2xl bg-gradient-to-br from-purple-900 to-indigo-900 border border-purple-500 my-6 text-white shadow-lg">
-                        <div class="flex justify-between items-center text-sm mb-4 border-b border-purple-400/30 pb-2">
-                            <span class="font-bold">Independent Architecture Metrics:</span>
-                            <span class="bg-green-400 text-gray-900 text-xs px-2.5 py-0.5 rounded-full font-black">100% Owned</span>
-                        </div>
-                        <ul class="text-xs space-y-3">
-                            <li class="flex items-center gap-2">✨ Zero hosting fees or recurring platform overhead</li>
-                            <li class="flex items-center gap-2">✨ Bulletproof ownership—your audience lists stay yours</li>
-                            <li class="flex items-center gap-2">✨ Complete design freedom with no third-party branding</li>
-                        </ul>
-                    </div>
-                `,
-                takeaway: "Stop renting your business infrastructure. Own your code, secure your asset tracking, and optimize your margins."
-            }
-        };
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span id="footer-name">Your Business Name</span>
+    <span class="footer-muted">Powered by a live, self-updating catalog</span>
+  </div>
+</footer>
 
-        function switchRoom(roomId) {
-            // Reset state on all room buttons
-            document.querySelectorAll('.room-btn').forEach(btn => {
-                btn.className = "room-btn px-6 py-3 rounded-xl font-bold text-sm bg-gray-100 text-gray-600 hover:bg-gray-200 transition duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2";
-                btn.setAttribute('aria-selected', 'false');
-            });
-            
-            // Highlight selected active room button
-            const activeBtn = document.getElementById(`btn-${roomId}`);
-            if (activeBtn) {
-                activeBtn.className = "room-btn px-6 py-3 rounded-xl font-bold text-sm bg-purple-600 text-white shadow-lg transition duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2";
-                activeBtn.setAttribute('aria-selected', 'true');
-            }
-            
-            // Inject room content
-            const data = rooms[roomId];
-            const contentContainer = document.getElementById('tour-content');
-            
-            if (data && contentContainer) {
-                contentContainer.innerHTML = `
-                    <div>
-                        <h3 class="text-2xl font-black text-gray-900 mb-2">${data.title}</h3>
-                        <p class="text-purple-600 italic text-sm font-medium mb-4">"${data.painPoint}"</p>
-                        ${data.visual}
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-100">
-                        <p class="text-gray-700 text-sm font-bold flex items-center gap-2">
-                            <span class="text-purple-600">🎯 Solution:</span> ${data.takeaway}
-                        </p>
-                    </div>
-                `;
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            switchRoom('room1');
-        });
-    </script>
-    
-    <!-- External Dynamic CMS/Airtable Logic -->
-    <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
